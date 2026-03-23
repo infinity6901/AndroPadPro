@@ -2,7 +2,7 @@
 title AndroPad Pro Server (Admin)
 cd /d "%~dp0"
 
-REM Self-elevate to Administrator if not already
+:: Self-elevate to Administrator if not already
 net session >nul 2>&1
 if errorlevel 1 (
     echo Requesting Administrator privileges...
@@ -14,33 +14,57 @@ echo ============================================================
 echo   AndroPad Pro Server - Full Mode (Administrator)
 echo ============================================================
 echo.
-echo Running as Administrator - all features enabled including
-echo keyboard simulation and Bluetooth.
-echo.
 
-REM Auto-install missing packages
+:: Check for pre-built exe first
+if exist "dist\AndroPadPro_Server_Admin\AndroPadPro_Server_Admin.exe" (
+    echo Starting AndroPadPro_Server_Admin.exe...
+    echo   Gamepad input           ^> UDP port 5005
+    echo   PC audio               ^> TCP port 5007
+    echo   PC screen              ^> TCP port 5008
+    echo   Mic input              ^> TCP port 5009
+    echo   Mouse + Keyboard sim   ^> enabled (Admin)
+    echo.
+    echo Waiting for AndroPad Pro app to connect...
+    echo Press Ctrl+C or close this window to stop.
+    echo.
+    "dist\AndroPadPro_Server_Admin\AndroPadPro_Server_Admin.exe"
+    goto :done
+)
+
+:: Fall back to Python
+python --version >nul 2>&1
+if errorlevel 1 (
+    echo ERROR: Python not found and no exe found.
+    echo Option 1: Install Python from https://python.org
+    echo Option 2: Build the exe with: pip install pyinstaller ^&^& pyinstaller AndroPadPro_Server_Admin.spec
+    pause
+    exit /b 1
+)
+
+echo Starting with Python (no exe found)...
+echo.
+echo Auto-installing missing packages...
 python -c "import vgamepad"      >nul 2>&1 || pip install vgamepad      -q
-python -c "import pyautogui"     >nul 2>&1 || pip install pyautogui     -q
-python -c "import keyboard"      >nul 2>&1 || pip install keyboard      -q
-python -c "import pyaudiowpatch" >nul 2>&1 || pip install pyaudiowpatch -q
-python -c "import sounddevice"   >nul 2>&1 || pip install sounddevice   -q
-python -c "import numpy"         >nul 2>&1 || pip install numpy         -q
-python -c "import mss"           >nul 2>&1 || pip install mss           -q
-python -c "import PIL"           >nul 2>&1 || pip install Pillow        -q
+python -c "import pyautogui"    >nul 2>&1 || pip install pyautogui     -q
+python -c "import keyboard"      >nul 2>&1 || pip install keyboard       -q
+python -c "import pyaudiowpatch">nul 2>&1 || pip install pyaudiowpatch -q
+python -c "import sounddevice"  >nul 2>&1 || pip install sounddevice   -q
+python -c "import numpy"        >nul 2>&1 || pip install numpy         -q
+python -c "import mss"          >nul 2>&1 || pip install mss           -q
+python -c "import PIL"          >nul 2>&1 || pip install Pillow        -q
 
 echo.
 echo Features:
-echo   Gamepad input   ^> UDP port 5005
-echo   PC audio        ^> TCP port 5007  (WASAPI loopback)
-echo   PC screen       ^> TCP port 5008
-echo   Mic input       ^> TCP port 5009
-echo   Bluetooth       ^> RFCOMM channel 1
-echo   Mouse + Keyboard simulation enabled (Admin mode)
+echo   Gamepad input           ^> UDP port 5005
+echo   PC audio               ^> TCP port 5007  (WASAPI loopback)
+echo   PC screen              ^> TCP port 5008
+echo   Mic input              ^> TCP port 5009
+echo   Mouse + Keyboard sim   ^> enabled (Admin)
 echo.
 echo To stop: press Ctrl+C or close this window.
 echo.
-
 python gamepad_server.py --audio --screen --mic
 
+:done
 echo.
 pause

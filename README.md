@@ -30,7 +30,22 @@ opacity controls, PC audio streaming, and PC screen streaming as a live backgrou
 ### Android
 1. Open `android/` in Android Studio → Sync Gradle → Build APK
 
-### Python Server
+### Python Server (two options)
+
+**Option A — Standalone .exe (no Python needed)**
+```bash
+cd server
+# Build the exe (requires Python + pip install pyinstaller):
+pip install pyinstaller
+pyinstaller AndroPadPro_Server.spec         # → dist/AndroPadPro_Server/AndroPadPro_Server.exe
+pyinstaller AndroPadPro_Server_Admin.spec    # → dist/AndroPadPro_Server_Admin/AndroPadPro_Server_Admin.exe
+
+# Run (double-click .bat or .exe):
+start_server.bat          # non-admin, no keyboard sim
+start_server_admin.bat    # admin, all features including keyboard sim
+```
+
+**Option B — Run with Python directly**
 ```bash
 cd server
 pip install -r requirements.txt
