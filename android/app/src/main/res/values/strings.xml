@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AndroPad Pro</string>
+    <string name="settings">Settings</string>
+    <string name="server_ip">Server IP Address</string>
+    <string name="port">Port</string>
+    <string name="connect">Connect</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="connected">Connected</string>
+    <string name="disconnected">Disconnected</string>
+    <string name="gyro_enabled">Gyroscope Steering</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+    <string name="auto_connect">Auto-connect via broadcast</string>
+    <string name="enter_ip">Enter PC IP address</string>
+    <string name="start">Start</string>
+    <string name="select">Select</string>
+    <string name="lb">LB</string>
+    <string name="rb">RB</string>
+    <string name="lt">LT</string>
+    <string name="rt">RT</string>
+    <string name="ping">Ping</string>
+    <string name="touchpad_mode">Touchpad Mode</string>
+    <string name="calibrate">Calibrate</string>
+    <!-- PC Streaming -->
+    <string name="audio_stream_label">Stream audio from PC</string>
+    <string name="screen_stream_label">Show PC screen as background</string>
+    <string name="audio_port_hint">PC Audio (port 5007)</string>
+    <string name="screen_port_hint">PC Screen (port 5008)</string>
+    <!-- Opacity -->
+    <string name="opacity_master">Master opacity</string>
+    <string name="opacity_background">Background</string>
+</resources>

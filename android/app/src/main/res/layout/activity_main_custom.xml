@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    android:keepScreenOn="true">
+
+    <!-- ── Background layer: image / video loop / screen stream ── -->
+    <com.andropadpro.client.view.BackgroundMediaView
+        android:id="@+id/background_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- ── Controls layer (transparent background so background shows through) ── -->
+    <FrameLayout
+        android:id="@+id/gamepad_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent">
+
+        <!-- Left Stick -->
+        <com.andropadpro.client.view.JoystickView
+            android:id="@+id/left_stick"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_gravity="start"
+            android:layout_marginStart="120dp"
+            android:layout_marginTop="280dp" />
+
+        <!-- D-Pad -->
+        <com.andropadpro.client.view.DPadView
+            android:id="@+id/dpad"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_gravity="start"
+            android:layout_marginStart="45dp"
+            android:layout_marginTop="150dp" />
+
+        <!-- LT — analog TriggerView -->
+        <com.andropadpro.client.view.TriggerView
+            android:id="@+id/lt_trigger"
+            android:layout_width="55dp"
+            android:layout_height="80dp"
+            android:layout_gravity="start"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="50dp" />
+
+        <!-- LB -->
+        <Button
+            android:id="@+id/btn_lb"
+            android:layout_width="65dp"
+            android:layout_height="36dp"
+            android:layout_gravity="start"
+            android:layout_marginStart="85dp"
+            android:layout_marginTop="55dp"
+            android:background="@drawable/shoulder_button_bg"
+            android:text="LB"
+            android:textColor="@color/button_text"
+            android:textSize="12sp" />
+
+        <!-- Right Stick -->
+        <com.andropadpro.client.view.JoystickView
+            android:id="@+id/right_stick"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="120dp"
+            android:layout_marginTop="280dp" />
+
+        <!-- Face Buttons -->
+        <com.andropadpro.client.view.FaceButtonsView
+            android:id="@+id/face_buttons"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="45dp"
+            android:layout_marginTop="150dp" />
+
+        <!-- RT — analog TriggerView -->
+        <com.andropadpro.client.view.TriggerView
+            android:id="@+id/rt_trigger"
+            android:layout_width="55dp"
+            android:layout_height="80dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="15dp"
+            android:layout_marginTop="50dp" />
+
+        <!-- RB -->
+        <Button
+            android:id="@+id/btn_rb"
+            android:layout_width="65dp"
+            android:layout_height="36dp"
+            android:layout_gravity="end"
+            android:layout_marginEnd="85dp"
+            android:layout_marginTop="55dp"
+            android:background="@drawable/shoulder_button_bg"
+            android:text="RB"
+            android:textColor="@color/button_text"
+            android:textSize="12sp" />
+
+        <!-- CAL -->
+        <Button
+            android:id="@+id/btn_gyro_calibrate"
+            android:layout_width="65dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="280dp"
+            android:background="@drawable/center_button_bg"
+            android:text="CAL"
+            android:textColor="@color/button_text"
+            android:textSize="11sp" />
+
+        <!-- SELECT -->
+        <Button
+            android:id="@+id/btn_select"
+            android:layout_width="80dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:background="@drawable/center_button_bg"
+            android:text="SELECT"
+            android:textColor="@color/button_text"
+            android:textSize="10sp" />
+
+        <!-- START -->
+        <Button
+            android:id="@+id/btn_start"
+            android:layout_width="80dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/center_button_bg"
+            android:text="START"
+            android:textColor="@color/button_text"
+            android:textSize="10sp" />
+
+    </FrameLayout>
+
+    <!-- ── Touchpad mode — separate layer, replaces gamepad view entirely ── -->
+    <com.andropadpro.client.view.TouchpadView
+        android:id="@+id/touchpad_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+    <!-- ── Top HUD bar ── -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/btn_lock"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginEnd="15dp"
+            android:background="@drawable/icon_button_bg"
+            android:text="🔓"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/icon_button_bg"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp">
+
+            <View
+                android:id="@+id/connection_indicator"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/connection_indicator_red" />
+
+            <TextView
+                android:id="@+id/status_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:text="@string/disconnected"
+                android:textColor="@color/button_text"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/ping_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="○"
+                android:textColor="#FF4444"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/gyro_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="GYRO"
+                android:textColor="#00BFFF"
+                android:textSize="9sp"
+                android:visibility="invisible" />
+
+            <!-- Touchpad toggle button -->
+            <Button
+                android:id="@+id/btn_touchpad_toggle"
+                android:layout_width="36dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="6dp"
+                android:background="@drawable/icon_button_bg"
+                android:text="🖱️"
+                android:textSize="12sp"
+                android:padding="0dp" />
+
+            <!-- Mic toggle button — hidden by default, shown via Settings -->
+            <Button
+                android:id="@+id/btn_mic_toggle"
+                android:layout_width="36dp"
+                android:layout_height="28dp"
+                android:layout_marginStart="4dp"
+                android:background="@drawable/icon_button_bg"
+                android:text="🎙️"
+                android:textSize="12sp"
+                android:padding="0dp"
+                android:visibility="gone" />
+
+            <!-- Audio stream indicator -->
+            <TextView
+                android:id="@+id/audio_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="♫"
+                android:textColor="#FFD700"
+                android:textSize="11sp"
+                android:visibility="gone" />
+
+            <!-- Screen stream indicator -->
+            <TextView
+                android:id="@+id/screen_indicator"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="▶"
+                android:textColor="#FF6B6B"
+                android:textSize="9sp"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_settings"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/icon_button_bg"
+            android:text="⚙"
+            android:textSize="14sp" />
+
+    </LinearLayout>
+
+</FrameLayout>

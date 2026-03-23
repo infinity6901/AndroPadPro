@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="xbox_green">#107C10</color>
+    <color name="dark_gray">#2D2D2D</color>
+    <color name="background">#1E1E1E</color>
+    <color name="button_default">#3D3D3D</color>
+    <color name="button_pressed">#107C10</color>
+    <color name="button_text">#FFFFFF</color>
+    <color name="stick_background">#252525</color>
+    <color name="stick_knob">#555555</color>
+    <color name="dpad_color">#444444</color>
+    <color name="trigger_zone">#333333</color>
+    <color name="trigger_pressed">#107C10</color>
+    <color name="hud_bg">#88000000</color>
+    <color name="launcher_bg">#0D1A0D</color>
+</resources>

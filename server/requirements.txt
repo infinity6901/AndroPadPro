@@ -1,0 +1,13 @@
+# Gamepad server core
+vgamepad
+pyautogui
+keyboard
+
+# PC audio streaming (WASAPI loopback — Windows)
+pyaudiowpatch
+sounddevice
+numpy
+
+# PC screen streaming
+mss
+Pillow

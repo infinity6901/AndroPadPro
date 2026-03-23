@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- ── Controller body (clean rounded rectangle) ── -->
+    <path
+        android:fillColor="#EEEEEE"
+        android:pathData="
+            M22,44
+            Q22,34 32,32
+            L40,31
+            Q43,26 54,26
+            Q65,26 68,31
+            L76,32
+            Q86,34 86,44
+            L86,60
+            Q86,68 78,70
+            L70,70
+            Q67,74 54,74
+            Q41,74 38,70
+            L30,70
+            Q22,68 22,60
+            Z"/>
+
+    <!-- Left grip -->
+    <path
+        android:fillColor="#EEEEEE"
+        android:pathData="
+            M22,56
+            Q16,58 15,66
+            Q14,74 19,78
+            Q24,82 30,78
+            L32,70
+            Q28,66 22,60
+            Z"/>
+
+    <!-- Right grip -->
+    <path
+        android:fillColor="#EEEEEE"
+        android:pathData="
+            M86,56
+            Q92,58 93,66
+            Q94,74 89,78
+            Q84,82 78,78
+            L76,70
+            Q80,66 86,60
+            Z"/>
+
+    <!-- ── Body fill (dark interior) ── -->
+    <path
+        android:fillColor="#1A1A1A"
+        android:pathData="
+            M25,44
+            Q25,36 34,35
+            L41,34
+            Q44,29 54,29
+            Q64,29 67,34
+            L74,35
+            Q83,36 83,44
+            L83,60
+            Q83,66 76,68
+            L69,68
+            Q66,72 54,72
+            Q42,72 39,68
+            L32,68
+            Q25,66 25,60
+            Z"/>
+
+    <!-- ── Left bumper ── -->
+    <path
+        android:fillColor="#BBBBBB"
+        android:pathData="M26,37 Q29,31 36,30 L44,30 Q41,34 37,36 Z"/>
+
+    <!-- ── Right bumper ── -->
+    <path
+        android:fillColor="#BBBBBB"
+        android:pathData="M82,37 Q79,31 72,30 L64,30 Q67,34 71,36 Z"/>
+
+    <!-- ── Left joystick ── -->
+    <path
+        android:fillColor="#2C2C2C"
+        android:pathData="M37,56 m-9,0 a9,9 0 1 1 18,0 a9,9 0 1 1 -18,0"/>
+    <path
+        android:fillColor="#107C10"
+        android:pathData="M37,56 m-5,0 a5,5 0 1 1 10,0 a5,5 0 1 1 -10,0"/>
+
+    <!-- ── Right joystick ── -->
+    <path
+        android:fillColor="#2C2C2C"
+        android:pathData="M64,63 m-9,0 a9,9 0 1 1 18,0 a9,9 0 1 1 -18,0"/>
+    <path
+        android:fillColor="#107C10"
+        android:pathData="M64,63 m-5,0 a5,5 0 1 1 10,0 a5,5 0 1 1 -10,0"/>
+
+    <!-- ── D-pad (proper cross shape) ── -->
+    <path
+        android:fillColor="#383838"
+        android:pathData="
+            M44,45 L46,45 L46,42 L50,42 L50,45 L52,45
+            L52,49 L50,49 L50,52 L46,52 L46,49 L44,49 Z"/>
+
+    <!-- ── Face buttons (correct positions) ── -->
+    <!-- A (bottom, green) -->
+    <path android:fillColor="#107C10"
+        android:pathData="M72,57 m-4,0 a4,4 0 1 1 8,0 a4,4 0 1 1 -8,0"/>
+    <!-- B (right, red) -->
+    <path android:fillColor="#E81123"
+        android:pathData="M78,51 m-4,0 a4,4 0 1 1 8,0 a4,4 0 1 1 -8,0"/>
+    <!-- X (left, blue) -->
+    <path android:fillColor="#0078D4"
+        android:pathData="M66,51 m-4,0 a4,4 0 1 1 8,0 a4,4 0 1 1 -8,0"/>
+    <!-- Y (top, yellow) -->
+    <path android:fillColor="#FFB900"
+        android:pathData="M72,45 m-4,0 a4,4 0 1 1 8,0 a4,4 0 1 1 -8,0"/>
+
+    <!-- ── Centre touchpad (green panel with gesture lines as paths) ── -->
+    <path
+        android:fillColor="#107C10"
+        android:fillAlpha="0.85"
+        android:pathData="
+            M49,46 Q49,43 52,43 L56,43 Q59,43 59,46
+            L59,53 Q59,56 56,56 L52,56 Q49,56 49,53 Z"/>
+
+    <!-- Gesture lines (drawn as thin path rectangles) -->
+    <path android:fillColor="#FFFFFF" android:fillAlpha="0.6"
+        android:pathData="M51,47 L57,47 L57,47.6 L51,47.6 Z"/>
+    <path android:fillColor="#FFFFFF" android:fillAlpha="0.6"
+        android:pathData="M51,49.2 L57,49.2 L57,49.8 L51,49.8 Z"/>
+    <path android:fillColor="#FFFFFF" android:fillAlpha="0.6"
+        android:pathData="M51,51.4 L57,51.4 L57,52 L51,52 Z"/>
+
+    <!-- ── WiFi arcs (top right, drawn as path strokes via thick outlined paths) ── -->
+    <!-- Inner arc -->
+    <path
+        android:strokeColor="#107C10"
+        android:strokeWidth="2"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:pathData="M79,26 A6,6 0 0 1 85,32"/>
+    <!-- Outer arc -->
+    <path
+        android:strokeColor="#107C10"
+        android:strokeWidth="2"
+        android:fillColor="#00000000"
+        android:strokeLineCap="round"
+        android:pathData="M76,23 A11,11 0 0 1 88,35"/>
+    <!-- WiFi dot -->
+    <path
+        android:fillColor="#107C10"
+        android:pathData="M82,31 m-2.5,0 a2.5,2.5 0 1 1 5,0 a2.5,2.5 0 1 1 -5,0"/>
+
+</vector>

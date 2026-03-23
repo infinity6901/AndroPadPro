@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <!-- Top Bar -->
+    <LinearLayout
+        android:id="@+id/editor_top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:background="#333333">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Drag to move, tap to select"
+            android:textColor="@color/button_text"
+            android:textSize="12sp"
+            android:gravity="center" />
+
+        <!-- Size Control -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="8dp">
+
+            <TextView
+                android:id="@+id/selected_view_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Selected: None"
+                android:textColor="@color/button_text"
+                android:textSize="12sp" />
+
+            <SeekBar
+                android:id="@+id/size_bar"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginHorizontal="12dp"
+                android:max="100"
+                android:progress="50" />
+
+            <TextView
+                android:id="@+id/size_text"
+                android:layout_width="80dp"
+                android:layout_height="wrap_content"
+                android:text="Size: --"
+                android:textColor="@color/button_text"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Editor Container — true full screen so saved coords match the game 1-to-1.
+         The top bar and bottom buttons are separate overlays in the same FrameLayout,
+         so no margin is needed here; drag code enforces a minY below the top bar. -->
+    <FrameLayout
+        android:id="@+id/editor_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <!-- Draggable D-Pad -->
+        <com.andropadpro.client.view.DPadView
+            android:id="@+id/editor_dpad"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:tag="dpad" />
+
+        <!-- Draggable Left Stick -->
+        <com.andropadpro.client.view.JoystickView
+            android:id="@+id/editor_left_stick"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:tag="left_stick" />
+
+        <!-- Draggable Right Stick -->
+        <com.andropadpro.client.view.JoystickView
+            android:id="@+id/editor_right_stick"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:tag="right_stick" />
+
+        <!-- Draggable Face Buttons -->
+        <com.andropadpro.client.view.FaceButtonsView
+            android:id="@+id/editor_face_buttons"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:tag="face_buttons" />
+
+        <!-- Draggable Start Button -->
+        <Button
+            android:id="@+id/editor_btn_start"
+            android:layout_width="80dp"
+            android:layout_height="32dp"
+            android:background="@drawable/center_button_bg"
+            android:text="START"
+            android:textColor="@color/button_text"
+            android:textSize="10sp"
+            android:tag="btn_start" />
+
+        <!-- Draggable Select Button -->
+        <Button
+            android:id="@+id/editor_btn_select"
+            android:layout_width="80dp"
+            android:layout_height="32dp"
+            android:background="@drawable/center_button_bg"
+            android:text="SELECT"
+            android:textColor="@color/button_text"
+            android:textSize="10sp"
+            android:tag="btn_select" />
+
+        <!-- Draggable LB Button -->
+        <Button
+            android:id="@+id/editor_btn_lb"
+            android:layout_width="65dp"
+            android:layout_height="36dp"
+            android:background="@drawable/shoulder_button_bg"
+            android:text="LB"
+            android:textColor="@color/button_text"
+            android:tag="btn_lb" />
+
+        <!-- Draggable RB Button -->
+        <Button
+            android:id="@+id/editor_btn_rb"
+            android:layout_width="65dp"
+            android:layout_height="36dp"
+            android:background="@drawable/shoulder_button_bg"
+            android:text="RB"
+            android:textColor="@color/button_text"
+            android:tag="btn_rb" />
+
+        <!-- Draggable LT Trigger -->
+        <View
+            android:id="@+id/editor_lt_trigger"
+            android:layout_width="55dp"
+            android:layout_height="80dp"
+            android:background="@drawable/trigger_bg"
+            android:tag="lt_trigger" />
+
+        <!-- Draggable RT Trigger -->
+        <View
+            android:id="@+id/editor_rt_trigger"
+            android:layout_width="55dp"
+            android:layout_height="80dp"
+            android:background="@drawable/trigger_bg"
+            android:tag="rt_trigger" />
+
+    </FrameLayout>
+
+    <!-- Bottom Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:padding="12dp">
+
+        <Button
+            android:id="@+id/btn_reset_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/center_button_bg"
+            android:paddingHorizontal="16dp"
+            android:text="Reset"
+            android:textColor="@color/button_text" />
+
+        <Button
+            android:id="@+id/btn_cancel_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/center_button_bg"
+            android:paddingHorizontal="16dp"
+            android:text="Cancel"
+            android:textColor="@color/button_text" />
+
+        <Button
+            android:id="@+id/btn_save_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/shoulder_button_bg"
+            android:paddingHorizontal="16dp"
+            android:text="Save"
+            android:textColor="@color/button_text" />
+
+    </LinearLayout>
+
+</FrameLayout>
