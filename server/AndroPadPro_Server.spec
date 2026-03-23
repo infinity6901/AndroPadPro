@@ -1,35 +1,45 @@
-# PyInstaller spec for AndroPad Pro Server (non-admin, no keyboard sim)
-# Run with: AndroPadPro_Server.exe
-#
-# Build:
-#   pip install pyinstaller
-#   pyinstaller AndroPadPro_Server.spec
-# The exe lands in dist/AndroPadPro_Server.exe
-
 import sys
 import os
+import pathlib
 
 block_cipher = None
+
+def _find_vigem_dll():
+    for base in [
+        pathlib.Path(sys.prefix),
+        pathlib.Path(sys.base_prefix),
+        pathlib.Path(os.environ.get('LOCALAPPDATA', '')) / 'Programs' / 'Python',
+    ]:
+        dll = base / 'vgamepad' / 'win' / 'vigem' / 'client' / 'x64' / 'ViGEmClient.dll'
+        if dll.is_file():
+            return str(dll)
+    import vgamepad.win.vigem_client as vc
+    p = pathlib.Path(sys.modules[vc.__name__].__file__).parent
+    dll = p / 'vigem' / 'client' / 'x64' / 'ViGEmClient.dll'
+    if dll.is_file():
+        return str(dll)
+    raise FileNotFoundError('ViGEmClient.dll not found — install vgamepad first: pip install vgamepad')
+
+VIGEM_DLL = _find_vigem_dll()
+print(f'Bundling ViGEmClient.dll from: {VIGEM_DLL}')
 
 a = Analysis(
     ['gamepad_server.py'],
     pathex=[],
-    binaries=[],
+    binaries=[
+        (VIGEM_DLL, 'vgamepad\\win\\vigem\\client\\x64'),
+    ],
     datas=[],
     hiddenimports=[
-        # Core gamepad / input
         'vgamepad',
         'vgamepad.win',
         'pyautogui',
-        # Audio streaming
         'pyaudiowpatch',
         'sounddevice',
         'numpy',
-        # Screen streaming
         'mss',
         'PIL',
         'PIL._imaging',
-        # Built-in modules used by streamers
         'threading',
         'struct',
         'socket',
@@ -59,13 +69,12 @@ exe = EXE(
     bootloader_ignore_signals=False,
     strip=False,
     upx=False,
-    console=True,           # keep console so users can see output
+    console=True,
     disable_windowed_traceback=False,
     argv_emulation=False,
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    # Pass --no-keyboard by default (no admin needed)
     args=['--no-keyboard', '--audio', '--screen', '--mic'],
 )
 
