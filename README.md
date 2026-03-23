@@ -30,19 +30,39 @@ opacity controls, PC audio streaming, and PC screen streaming as a live backgrou
 ### Android
 1. Open `android/` in Android Studio → Sync Gradle → Build APK
 
-### Python Server (two options)
+### Python Server (three options)
 
-**Option A — Standalone .exe (no Python needed)**
+**Option A — GUI App (recommended, no Python needed)**
 ```bash
 cd server
-# Build the exe (requires Python + pip install pyinstaller):
+# Download AndroPadPro_Server_GUI_v1.0.0.zip from GitHub releases
+# Extract it, then run:
+start_gui.bat              # Admin mode (full features)
+start_gui_nonadmin.bat    # Non-admin (gamepad only)
+
+# Or run the exe directly:
+AndroPadPro_Server_GUI\AndroPadPro_Server_GUI.exe
+```
+A modern Windows desktop app with start/stop controls, feature toggles,
+real-time log console, connection info, and quick-start guide.
+
+**Option B — Standalone console .exe (no Python needed)**
+```bash
+cd server
+# Build (requires Python + pip install pyinstaller):
 pip install pyinstaller
 pyinstaller AndroPadPro_Server.spec         # → dist/AndroPadPro_Server/AndroPadPro_Server.exe
-pyinstaller AndroPadPro_Server_Admin.spec    # → dist/AndroPadPro_Server_Admin/AndroPadPro_Server_Admin.exe
+pyinstaller AndroPadPro_Server_Admin.spec  # → dist/AndroPadPro_Server_Admin/AndroPadPro_Server_Admin.exe
 
-# Run (double-click .bat or .exe):
 start_server.bat          # non-admin, no keyboard sim
 start_server_admin.bat    # admin, all features including keyboard sim
+```
+
+**Option C — Run with Python directly**
+```bash
+cd server
+pip install -r requirements.txt
+python gamepad_server.py
 ```
 
 **Option B — Run with Python directly**

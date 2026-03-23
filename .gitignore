@@ -84,4 +84,7 @@ env/
 
 # PyInstaller build output
 server/dist/
-server/build/
+server/dist_gui/
+server/gui/dist/
+server/gui/build/
+server/gui/*.spec
