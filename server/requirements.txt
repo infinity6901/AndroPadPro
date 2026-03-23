@@ -11,12 +11,3 @@ numpy
 # PC screen streaming
 mss
 Pillow
-
-# ─── Optional ────────────────────────────────────────────────────────────────────
-# PyInstaller: build standalone .exe (Windows only)
-# pip install pyinstaller
-# Build commands:
-#   pyinstaller AndroPadPro_Server.spec         → dist/AndroPadPro_Server/AndroPadPro_Server.exe
-#   pyinstaller AndroPadPro_Server_Admin.spec  → dist/AndroPadPro_Server_Admin/AndroPadPro_Server_Admin.exe
-# PyInstaller is listed as a dev dependency — install separately:
-#   pip install pyinstaller
